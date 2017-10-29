@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import {Component, ViewChild} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-=======
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 import * as firebase from "firebase";
 import {Storage} from "@ionic/storage";
 
@@ -14,7 +9,6 @@ import {Storage} from "@ionic/storage";
 })
 
 export class ChatPage {
-<<<<<<< HEAD
   @ViewChild('content') content:any;
   public time : any
   public title : any
@@ -44,34 +38,7 @@ export class ChatPage {
     this.guyname = navparams.get('guyname');
 
 
-=======
-  public mensagem: any
-  public id: any
-  public items: Array<any> = [];
-  public itemRef: firebase.database.Reference =
-    firebase.database().ref('/chat/CJ');
 
-  constructor(public storage: Storage, public navCtrl: NavController) {
-   // this.you = this.storage.get('uid');
-  }
-
-  enviar(): void {
-    this.storage.get('uid').then((id) => {
-      var mensagem = this.mensagem;
-      this.id = id;
-      this.itemRef.push({id, mensagem});
-    });
-  }
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
-
-  ionViewDidLoad() {
-      this.itemRef.on('value', itemSnapShot => {
-        this.items = [];
-        itemSnapShot.forEach(itemSnap => {
-          this.items.push(itemSnap.val());
-          return false;
-      });
-    });
   }
 
   existe(conversa, x, id):any{

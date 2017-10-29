@@ -13,7 +13,6 @@ export class MenuPage {
 
   constructor(public storage: Storage, public navCtrl: NavController) {
     this.navCtrl = navCtrl;
-<<<<<<< HEAD
     this.navCtrl
     //alert("iniciando showppl");
     storage.get('atual').then((atual) => {
@@ -55,19 +54,6 @@ export class MenuPage {
     if (this.rodando == 0) {
       this.rodando = 1;
       var self = this;
-=======
-    //alert("iniciando showppl");
-    storage.get('atual').then((atual) => {
-      this.showppl(atual);
-    })
-  }
-
-  rodando = 0;
-
-  public getData() {
-    if (this.rodando == 0) {
-      this.rodando = 1;
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
       var millisecondsToWait = 500;
       //alert("iniciou data");
       var candidatos = [];
@@ -77,17 +63,10 @@ export class MenuPage {
       var menor = 999;
       var posmenor = 0;
       var ninguem = 1;
-<<<<<<< HEAD
       var fimAnt = 0;
 
       var storage = this.storage;
       //alert("data Storage");
-=======
-      var max = 0;
-
-      var storage = this.storage;
-      // alert("data Storage");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
       (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/user.jpg';
       document.getElementById("nome").innerHTML = 'procurando...';
       document.getElementById("instrumento").innerHTML = 'procurando...';
@@ -95,11 +74,7 @@ export class MenuPage {
 
 
       storage.get('uid').then((ID) => { // MEU ID
-<<<<<<< HEAD
         //alert(" ID = " + ID);
-=======
-        // alert("data ID");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
 
         this.storage.get('festilo').then((festilo) => { // MEUS FILTROS
@@ -109,7 +84,6 @@ export class MenuPage {
               var ref = firebase.database().ref("people/");
 
               ref.once("value", function (snapshot) { // CAMINHO PEOPLE
-<<<<<<< HEAD
                 //alert("data caminho ppl");
                 self.max = snapshot.numChildren();
                 //alert("data caminho ppl2");
@@ -121,15 +95,6 @@ export class MenuPage {
                   }
                   done = done + 1;
                   //alert("done= "+done);
-=======
-                 max = snapshot.numChildren();
-                // alert("data caminho ppl");
-
-                //  alert("data inserindo pessoas");
-                ref.on("child_added", snap => { // LOOP PESSOAS
-                  done = done + 1;
-                  //  alert("done= "+done);
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
                   var pid = snap.key;                                       // DADOS PESSOA
                   var pestilo = snap.child("Estilo").val();           // DADOS PESSOA
@@ -138,7 +103,6 @@ export class MenuPage {
 
                   var you = firebase.database().ref("people/" + ID + "/Marcados"); // MINHA LISTA DE MARCADOS
                   you.once("value", function (snapshot2) {
-<<<<<<< HEAD
                     //alert("verificando " + pid);
                     if (!snapshot2.child(pid).exists() && pid != ID) { // VERIFICA SE JÁ NÃO FOI MARCADO OU É O DONO DA ACC
                       //alert(pid + " n marcado ");
@@ -190,49 +154,6 @@ export class MenuPage {
                               break;
                             } // VERIFICA PONTUAÇÃO PARA INSERIR NA LISTA DE CANDIDATOS
                           }
-=======
-                    // alert("verificando "+pid);
-                    if (!snapshot2.child(pid).exists() && pid != ID) { // VERIFICA SE JÁ NÃO FOI MARCADO OU É O DONO DA ACC
-                      ninguem = 0;
-                      if (pestilo == festilo || festilo == "any") {
-                        pontos = pontos + 25 + Math.random() * 15;
-
-                      }
-                      if (pinstrumento == finstrumento || finstrumento == "any") {
-                        pontos = pontos + 30 + Math.random() * 15;
-
-                      }
-                      if (psexo == fsexo || fsexo == "any") {
-                        pontos = pontos + 20 + Math.random() * 15;
-
-                      } // CALCULO DA PONTUAÇÃO
-                      //alert(pid+"  pontuação: "+pontos);
-                      if (empty < 3) {
-                        candidatos[empty * 2] = pid;
-                        candidatos[empty * 2 + 1] = pontos;
-                        //alert(pid + " inserido na casa " + (empty*2) + " e pontos (" + pontos + ") na casa" + (empty*2+1));
-                        empty++;
-                      }
-                      else {
-                        for (var i = 1; i <= 6; i = i + 2) {
-                          //alert("INICIO ACHA MENOR");
-                          for (var x = 1; x <= 6; x = x + 2) {
-                            //  alert(" candidatos[x] = "+  candidatos[x]+ ";  menor =" + menor);
-                            if (menor >= candidatos[x]) {
-                              menor = candidatos[x];
-                              posmenor = x;
-                              //alert("substitui menor por "+menor);
-                            }
-                          }//alert("COMPARA ATUAL ("+pontos+") COM MENOR ("+menor+")");
-                          if (pontos > menor || candidatos[posmenor - 1] == "marcado") {
-
-                            candidatos[posmenor - 1] = pid;
-                            candidatos[posmenor] = pontos;
-
-                            // alert(pid + " inserido na casa " + (posmenor-1) + " e pontos (" + candidatos[posmenor] + ") na casa" + posmenor);
-                            break;
-                          } // VERIFICA PONTUAÇÃO PARA INSERIR NA LISTA DE CANDIDATOS
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
                         }
                       }
                       menor = 999;
@@ -254,19 +175,13 @@ export class MenuPage {
       })
       var self = this;
       var bool = false;
-<<<<<<< HEAD
       var x = setInterval(function () {
         //alert("ainda não");
         //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
-=======
-      setTimeout(function () {
-
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
         storage.set('candidato0', null).then((ca10) => {
           storage.set('candidato1', null).then((ca10) => {
             storage.set('candidato2', null).then((ca10) => {
-<<<<<<< HEAD
               if (done == self.max && ninguem == 0 || fimAnt==3) {
                 for (var i = 0; i < 3; i++) {
                   //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
@@ -278,48 +193,27 @@ export class MenuPage {
                       self.rodando = 0;
                       self.showppl(0);
                       clearInterval(x);
-=======
-              if (done == max && ninguem == 0) {
-                for (var i = 0; i < 3; i++) {
-                  self.SetCandidatos(i, candidatos, storage).then((fim) => {
-                    if (fim == true) {
-                      //  alert("bool = true, showppl");
-                      self.rodando=0;
-                      self.showppl(0);
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
                     }
                   })
                 }
               }
 
 
-<<<<<<< HEAD
               else if (done == self.max && ninguem == 1 || fimAnt==3) {
                 //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
                 self.rodando = 0;
-=======
-              else if (done == max && ninguem == 1) {
-                self.rodando=0;
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
                 (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/user.jpg';
                 document.getElementById("nome").innerHTML = 'Sem perfis';
                 document.getElementById("instrumento").innerHTML = 'remova';
                 document.getElementById("estilo").innerHTML = 'alguns filtros';
-<<<<<<< HEAD
                 clearInterval(x);
               }
               //alert("return");
 
-=======
-              }
-              //alert("return");
-              return;
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
             })
           })
         })
       }, millisecondsToWait);
-<<<<<<< HEAD
 
     }
   }
@@ -342,11 +236,6 @@ export class MenuPage {
     var self = this;
     var storage = this.storage;
 
-=======
-
-    }
-  }
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
     storage.get('candidato' + i).then((candidato) => {
       if (candidato != null) {
@@ -356,7 +245,6 @@ export class MenuPage {
           var ref = firebase.database().ref("people/" + candidato);
 
 
-<<<<<<< HEAD
           ref.once("value", function (snapshot) { // CAMINHO PESSOA CANDIDATA
 
             (<HTMLImageElement>document.getElementById("profile")).src = snapshot.child("Foto").val();
@@ -385,62 +273,6 @@ export class MenuPage {
   atualizasim() {
     if (this.rodando==1)
       return;
-=======
-
-  SetCandidatos(i, candidatos, storage) {
-    //   alert("candidato "+i+" = "+candidatos[i*2]+"; pontuação = "+candidatos[i*2 +1]);
-    return storage.set('candidato' + i, candidatos[i * 2]).then((x) => {
-      if (i == 2) {
-        //  alert("retornou true");
-        return true;
-      }
-      //  alert("retornou false");
-      return false;
-    })
-  }
-
-  public showppl(i) {
-    //  alert("iniciou showppl");
-    var self = this;
-    var view = 0;
-    var storage = this.storage;
-
-
-    storage.get('candidato' + i).then((candidato) => {
-      if (candidato != null) {
-        //  alert("candidato da vez:  " + candidato);
-        if (candidato != "marcado") {
-          //  alert("candidato não é marcado");
-          var ref = firebase.database().ref("people/" + candidato);
-
-
-          ref.once("value", function (snapshot) { // CAMINHO PESSOA CANDIDATA
-
-            (<HTMLImageElement>document.getElementById("profile")).src = snapshot.child("Foto").val();
-            document.getElementById("nome").innerHTML = snapshot.child("Nome").val();
-            document.getElementById("instrumento").innerHTML = snapshot.child("Instrumento").val();
-            document.getElementById("estilo").innerHTML = snapshot.child("Estilo").val();
-            //   alert("printou");
-            //  alert("view = " + view);
-            storage.set('atual', (i));
-          })
-        }
-        else {
-          //   alert("tava marcado");
-          self.getData();
-        }
-      } else {
-        //  alert("sem storage");
-        self.getData();
-      }
-    })
-
-
-  }
-
-
-  atualizasim() {
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
     var self = this;
     var config = {
       apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
@@ -453,28 +285,16 @@ export class MenuPage {
     }
     var storage = this.storage;
     storage.get('uid').then((ID) => {
-<<<<<<< HEAD
       //alert("iniciou atualiza sim");
       storage.get('atual').then((atual) => {
         //alert("a");
         storage.get('candidato' + atual).then((candidato) => {
           //alert("b");
-=======
-      //   alert("iniciou atualiza sim");
-      storage.get('atual').then((atual) => {
-        //    alert("a");
-        storage.get('candidato' + atual).then((candidato) => {
-          //    alert("b");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
           var marked = firebase.database().ref("people/" + ID + "/Marcados");
           marked.once("value", function (snapshot) {
 
-<<<<<<< HEAD
             //alert("c");
-=======
-            //     alert("c");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
             marked.update({
               [candidato]: true
@@ -483,27 +303,18 @@ export class MenuPage {
           var liked = firebase.database().ref("people/" + ID + "/Likes");
           liked.once("value", function (snapshot) {
 
-<<<<<<< HEAD
             //alert("c");
-=======
-            //     alert("c");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
             liked.update({
               [candidato]: true
             });
           })
 
-<<<<<<< HEAD
           //alert("d");
-=======
-          //   alert("d");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
           storage.set('candidato' + atual, "marcado").then(() => {
             self.showppl(atual + 1);
           })
           storage.set('atual', atual + 1);
-<<<<<<< HEAD
 
 
           var matched = firebase.database().ref();
@@ -526,21 +337,12 @@ export class MenuPage {
         })
       })
     })
-=======
-        })
-      })
-    })
-
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
   }
 
 
   atualizanao() {
-<<<<<<< HEAD
     if (this.rodando==1)
       return;
-=======
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
     var self = this;
     var config = {
       apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
@@ -553,38 +355,22 @@ export class MenuPage {
     }
     var storage = this.storage;
     storage.get('uid').then((ID) => {
-<<<<<<< HEAD
       //alert("iniciou atualiza sim");
       storage.get('atual').then((atual) => {
         //alert("a");
         storage.get('candidato' + atual).then((candidato) => {
           //alert("b");
-=======
-      //   alert("iniciou atualiza sim");
-      storage.get('atual').then((atual) => {
-        //    alert("a");
-        storage.get('candidato' + atual).then((candidato) => {
-          //    alert("b");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
           var marked = firebase.database().ref("people/" + ID + "/Marcados");
           marked.once("value", function (snapshot) {
 
-<<<<<<< HEAD
             //alert("c");
-=======
-            //     alert("c");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
 
             marked.update({
               [candidato]: true
             });
           })
-<<<<<<< HEAD
           //alert("d");
-=======
-          //   alert("d");
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
           storage.set('candidato' + atual, "marcado").then(() => {
             self.showppl(atual + 1);
           })
@@ -614,11 +400,7 @@ export class MenuPage {
     var instrumentoRef = firebase.database().ref("user");
 
     instrumentoRef.orderByChild("Estilo").equalTo("Rock").on("child_added", function (data) {
-<<<<<<< HEAD
       //alert("Equal to filter: " + data.val().Nome);
-=======
-      alert("Equal to filter: " + data.val().Nome);
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
     });
 
   }

@@ -264,7 +264,6 @@ export class FiltroPage {
     actionSheet.present();
   }
 
-<<<<<<< HEAD
   GravarFiltro() {
     var storage = this.storage;
 
@@ -319,57 +318,6 @@ export class FiltroPage {
         });
       });
     });
-=======
-  GravarFiltro(){
-	  var storage = this.storage;
-
-	  var festilo1 = storage.get('festilo').then((festilo1) => {
-		  if(festilo1==null){
-		  festilo1="any"
-	     }
-
-		 var finstrumento1 = storage.get('finstrumento').then((finstrumento1) => {
-		  if(finstrumento1==null){
-		  finstrumento1="any"
-	       }
-
-		   var fdistancia1 = storage.get('fdistancia').then((fdistancia1) => {
-		      if(fdistancia1==null){
-		       fdistancia1="any"
-	           }
-			   var fidade1 = storage.get('fidade').then((fidade1) => {
-		         if(fidade1==null){
-		         fidade1="any"
-	              }
-				   var fsexo1 = storage.get('fsexo').then((fsexo1) => {
-
-	                 if(fsexo1==null){
-		             fsexo1="any"
-		             }
-					  var ID = storage.get('uid').then((ID) => {
-
-					  var postsRef = firebase.database().ref("people/" + ID + "/Filtros");
-                      postsRef.set({
-                      festilo: festilo1,
-                      finstrumento: finstrumento1,
-                      fdistancia: fdistancia1,
-                      fidade: fidade1,
-                      fsexo: fsexo1
-                      });
-
-
-	                  });
-
-	              });
-	           });
-             });
-	     });
-
-	  });
-
-
-
->>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
   }
 
 
