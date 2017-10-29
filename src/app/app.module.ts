@@ -1,0 +1,141 @@
+<<<<<<< HEAD
+import {NgModule, ErrorHandler} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {MyApp} from './app.component';
+import {IonicStorageModule} from '@ionic/storage';
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {HomePage} from '../pages/home/home';
+import {TabsPage} from '../pages/tabs/tabs';
+import {MenuPage} from '../pages/menu/menu';
+import {CadastrarPage} from '../pages/cadastrar/cadastrar';
+import {PerfilPage} from '../pages/perfil/perfil';
+import {ContatosPage} from '../pages/contatos/contatos';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {ChatPage} from '../pages/chat/chat';
+import {AngularFireModule} from "angularfire2";
+import {FiltroPage} from '../pages/filtro/filtro';
+import {PhotoLibrary} from "@ionic-native/photo-library";
+=======
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { MenuPage } from '../pages/menu/menu';
+import { CadastrarPage } from '../pages/cadastrar/cadastrar';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { ContatosPage } from '../pages/contatos/contatos';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { ChatPage } from '../pages/chat/chat';
+import { AngularFireModule } from "angularfire2";
+import { FiltroPage } from '../pages/filtro/filtro';
+import { PhotoLibrary} from "@ionic-native/photo-library";
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+import {Camera} from "@ionic-native/camera";
+import {
+  MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
+  CaptureAudioOptions
+} from '@ionic-native/media-capture';
+<<<<<<< HEAD
+import {FileChooser} from "@ionic-native/file-chooser";
+=======
+import { FileChooser} from "@ionic-native/file-chooser";
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+import {Media} from "@ionic-native/media";
+import {FilePath} from "@ionic-native/file-path";
+import {Keyboard} from "@ionic-native/keyboard";
+import {Crop} from "@ionic-native/crop";
+<<<<<<< HEAD
+import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
+import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
+import {PicBubble} from "../pages/Components/picbubble/PicBubble";
+=======
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+
+var config = {
+
+  apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
+  authDomain: "bander-c876f.firebaseapp.com",
+  databaseURL: "https://bander-c876f.firebaseio.com",
+  projectId: "bander-c876f",
+  storageBucket: "bander-c876f.appspot.com",
+  messagingSenderId: "1071542792886"
+};
+
+@NgModule({
+
+  declarations: [
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage,
+    MenuPage,
+    ContatosPage,
+    ChatPage,
+    PerfilPage,
+    FiltroPage,
+    CadastrarPage,
+    PerfilEditPage,
+    ChatBubble,
+    PicBubble
+  ],
+  imports: [
+    BrowserModule,
+<<<<<<< HEAD
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false,
+      autoFocusAssist: false
+    }),
+    AngularFireModule.initializeApp(config),
+    IonicStorageModule.forRoot()
+=======
+    IonicModule.forRoot(MyApp,{
+      scrollAssist: false,
+    autoFocusAssist: false}),
+    AngularFireModule.initializeApp(config),
+	IonicStorageModule.forRoot()
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage,
+    MenuPage,
+    ContatosPage,
+    ChatPage,
+    PerfilPage,
+    FiltroPage,
+    CadastrarPage,
+    PerfilEditPage,
+    ChatBubble,
+    PicBubble
+  ],
+  providers: [
+    Crop,
+    Keyboard,
+    FilePath,
+    Media,
+    FileChooser,
+    MediaCapture,
+    PhotoLibrary,
+    Camera,
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
+})
+export class AppModule {
+}

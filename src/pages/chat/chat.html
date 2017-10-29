@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title id="titulo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content #content padding>
+	<ion-label stacked color="secondary">Vocês deram match!</ion-label>
+	<ion-label stacked color="secondary">Envie uma mensagem para entrar em contato!</ion-label>
+<<<<<<< HEAD
+  <ion-list no-lines>
+
+    <ion-item *ngFor="let msg of messages" >
+      <chat-bubble [message]="msg"></chat-bubble>
+
+    </ion-item>
+
+=======
+  <ion-list>
+  <ion-item *ngFor="let item of items;">
+    <p>{{item.id}}</p>
+    <br/>
+    <h2>{{item.mensagem}}</h2>
+    <br/><br/><br/>
+
+  </ion-item>
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+  </ion-list>
+</ion-content>
+
+
+<ion-footer class="chatPageFooter">
+  <ion-toolbar>
+
+    <ion-item>
+      <ion-label style="margin:0px;"></ion-label>
+      <div item-content style="width:100%;">
+<<<<<<< HEAD
+        <ion-input #txtChat id="msgbox"[(ngModel)]='mensagem' placeholder="Escreva sua mensagem aqui" lineHeight="22"></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-buttons full right>
+      <button style="min-width:45px;height:40px;" (click)="enviar();">
+        <ion-icon name="send" color="dark" ></ion-icon>
+=======
+        <ion-textarea #txtChat [(ngModel)]='mensagem' placeholder="Escreva sua mensagem aqui" lineHeight="22"></ion-textarea>
+      </div>
+    </ion-item>
+
+    <ion-buttons right>
+      <button style="min-width:45px;height:40px;">
+        <ion-icon name="send" color="dark" (click)="enviar()"></ion-icon>
+>>>>>>> f209fe051c06c284e13a134be3ab916b189a39d6
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

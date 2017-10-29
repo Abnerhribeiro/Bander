@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title color>Seus Matches</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="cog" color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]='busca' placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <pic-bubble [pic]="item"></pic-bubble>
+      <ion-icon name="{{item.icon}}" item-left color="dark"></ion-icon>
+      {{item.title}}
+      <div class="item-note" item-right>
+        {{item.note}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
