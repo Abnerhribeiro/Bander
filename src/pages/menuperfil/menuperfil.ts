@@ -14,10 +14,10 @@ import {PerfilEditPage} from "../perfiledit/perfiledit";
 
 
 @Component({
-  templateUrl: 'perfil.html',
-  selector: 'page-perfil'
+  templateUrl: 'menuperfil.html',
+  selector: 'page-menuperfil'
 })
-export class PerfilPage {
+export class MenuPerfilPage {
 
   constructor(public crop: Crop, public mediaCapture: MediaCapture, public camera: Camera, public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.navCtrl = navCtrl;
@@ -28,47 +28,7 @@ export class PerfilPage {
     this.navCtrl.push(PerfilEditPage);
   }
 
-  clickaudio() {
-    let options: CaptureAudioOptions = {limit: 3};
-    this.mediaCapture.captureAudio(options)
-      .then(
-        (data: MediaFile[]) => console.log(data),
-        (err: CaptureError) => console.error(err)
-      );
-  }
 
-  clickcamera() {
-    var storage = this.storage;
-    const options: CameraOptions = {
-      allowEdit: true,
-      targetWidth: 300,
-      targetHeight: 300,
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      sourceType: 0
-    }
-    storage.get('uid').then((ID) => {
-      this.camera.getPicture(options).then((imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        // If it's base64:
-        let base64Image = 'data:image/jpeg;base64,' + imageData;
-        (<HTMLImageElement>document.getElementById("profile_pessoa")).src = base64Image;
-        var marked = firebase.database().ref("people/" + ID);
-        marked.once("value", function (snapshot) {
-
-          //     alert("c");
-
-          marked.update({
-            Foto: base64Image
-          });
-        })
-
-      }, (err) => {
-        // Handle error
-      });
-    })
-  }
   ionViewWillEnter(){
     var storage = this.storage;
     storage.get('uid').then((ID) => {

@@ -14,6 +14,7 @@ import {ContatosPage} from '../pages/contatos/contatos';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {ChatPage} from '../pages/chat/chat';
+import {MenuPerfilPage} from "../pages/menuperfil/menuperfil";
 import {AngularFireModule} from "angularfire2";
 import {FiltroPage} from '../pages/filtro/filtro';
 import {PhotoLibrary} from "@ionic-native/photo-library";
@@ -56,6 +57,7 @@ var config = {
     FiltroPage,
     CadastrarPage,
     PerfilEditPage,
+    MenuPerfilPage,
     ChatBubble,
     PicBubble
   ],
@@ -83,6 +85,7 @@ var config = {
     FiltroPage,
     CadastrarPage,
     PerfilEditPage,
+    MenuPerfilPage,
     ChatBubble,
     PicBubble
   ],

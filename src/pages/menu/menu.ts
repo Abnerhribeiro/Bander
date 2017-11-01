@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import {FiltroPage} from '../filtro/filtro';
 import {Storage} from '@ionic/storage';
 import {isPromise} from "rxjs/util/isPromise";
+import {MenuPerfilPage} from "../menuperfil/menuperfil";
 
 @Component({
   selector: 'page-menu',
@@ -49,6 +50,10 @@ export class MenuPage {
   rodando = 0;
 
   max = -1;
+
+  public teste(){
+    this.navCtrl.push(MenuPerfilPage);
+  }
 
   public getData() {
     if (this.rodando == 0) {
