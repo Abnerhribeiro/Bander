@@ -84,6 +84,15 @@ export class PerfilPage {
     }
   }
 
+  endRecord(){
+    this.fileR.stopRecord();
+    this.fileR.release();
+  }
+
+  playLastRecord(){
+    this.fileR.play();
+  }
+
   createName(extension){
     let d = new Date(),
       n = d.getTime(),
