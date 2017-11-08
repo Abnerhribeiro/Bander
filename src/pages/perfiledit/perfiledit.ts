@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
-import * as firebase from 'firebase';
-import {App, NavController} from "ionic-angular";
+import * as firebase from 'firebase'
+import {FilePath} from "@ionic-native/file-path";
+import {App, NavController, NavParams, Platform} from "ionic-angular";
 import { Storage } from '@ionic/storage';
+import { File } from '@ionic-native/file';
 import { ActionSheetController } from 'ionic-angular'
 import {Camera, CameraOptions} from "@ionic-native/camera";
 import {
   MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
   CaptureAudioOptions
 } from '@ionic-native/media-capture';
+
 import { Crop } from '@ionic-native/crop';
+import {Media, MediaObject} from "@ionic-native/media";
 
 
 
@@ -23,15 +27,22 @@ import { Crop } from '@ionic-native/crop';
 export class PerfilEditPage {
 
 
-
+  fileR: MediaObject
   nome:any
   instrumento:any
   estilo:any
   descricao:any
   foto:any
+  filename:any
 
 
-  constructor(public crop: Crop, public mediaCapture : MediaCapture, public camera: Camera, public storage: Storage, public navCtrl: NavController,public actionSheetCtrl: ActionSheetController) {
+  constructor(public file: File, public platform: Platform, public crop: Crop,
+              public mediaCapture : MediaCapture, public camera: Camera,
+              public storage: Storage, public navCtrl: NavController,
+              public actionSheetCtrl: ActionSheetController, public media: Media,
+              public filepath : FilePath, public navparams : NavParams,
+              public mediaobject : MediaObject) {
+    this.filepath = filepath;
     this.navCtrl = navCtrl;
     var self = this;
     storage.get('uid').then((ID) => {
@@ -43,6 +54,7 @@ export class PerfilEditPage {
                 storage.get('descricao').then((descricao) => {
 
                   document.getElementById("batataum").style.backgroundImage = "url("+"'"+img+"'"+")";
+                  this.oi();
 
                   if (self.descricao==null)
                     self.descricao = "Descrição ainda não funciona :(";
@@ -87,6 +99,53 @@ export class PerfilEditPage {
       }
     }
     }
+
+  oi(){
+    this.platform.ready().then(() => {
+
+      let name = new Date().getTime();
+
+      if (this.platform.is('ios')) {
+        this.filename = this.file.documentsDirectory.replace(/file:\/\//g, '') + name + '.m4a';
+      }
+      else if (this.platform.is('android')) {
+        this.filename = this.file.externalDataDirectory.replace(/file:\/\//g, '') + name + '.3gp';
+        alert("something happened: oi");
+      }
+
+    });
+
+    //this.startListening();
+
+
+  }
+  start()
+  {
+
+    this.mediaobject = this.media.create(this.filename);
+
+    this.mediaobject.startRecord();
+    alert("something happened: start recording");
+  }
+  stop()
+  {
+
+    this.mediaobject.stopRecord();
+
+    console.log('duration: ' + this.mediaobject.getDuration());
+
+    this.mediaobject.release();
+
+    console.log('done recording' + this.filename);
+    alert("something happened: done recording");
+
+  }
+  //coloca esses 3 blocos ai e testa lá
+  play()
+  {
+    this.mediaobject.play();
+    alert("something happened: play");
+  }
 
 
   clickaudio(){

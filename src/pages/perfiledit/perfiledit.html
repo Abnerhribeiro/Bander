@@ -40,6 +40,9 @@
         </ion-item>
       <ion-input id="descricaob" [(ngModel)]='descricao' color="dark" style="white-space:normal; overflow:inherit; text-overflow:inherit;"></ion-input>
       <br/><br/><br/><br/>
+      <button ion-button color="dark" class="action-sheet-button" (click)="start()" round>Gravar Aúdio</button>
+      <button ion-button color="dark" class="action-sheet-button" (click)="stop()" round>Parar gravação</button>
+      <button ion-button color="dark" class="action-sheet-button" (click)="play()" round>Ouvir Aúdio</button>
       <button ion-button color="dark" class="action-sheet-button" (click)="clickcamera()" round>Adicionar Foto</button>
       <button ion-button color="dark" class="action-sheet-button" (click)="salvar()" round>Salvar</button>
 

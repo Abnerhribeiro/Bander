@@ -11,6 +11,8 @@ import {
 } from '@ionic-native/media-capture';
 import {Crop} from '@ionic-native/crop';
 import {PerfilEditPage} from "../perfiledit/perfiledit";
+import {PerfilPage} from "../perfil/perfil";
+
 
 
 @Component({
