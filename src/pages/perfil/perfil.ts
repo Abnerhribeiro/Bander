@@ -5,10 +5,7 @@ import {App, NavController} from "ionic-angular";
 import {Storage} from '@ionic/storage';
 import {ActionSheetController} from 'ionic-angular'
 import {Camera, CameraOptions} from "@ionic-native/camera";
-import {
-  MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
-  CaptureAudioOptions
-} from '@ionic-native/media-capture';
+
 import {Crop} from '@ionic-native/crop';
 import {PerfilEditPage} from "../perfiledit/perfiledit";
 
@@ -19,7 +16,7 @@ import {PerfilEditPage} from "../perfiledit/perfiledit";
 })
 export class PerfilPage {
 
-  constructor(public crop: Crop, public mediaCapture: MediaCapture, public camera: Camera, public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public crop: Crop, public camera: Camera, public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.navCtrl = navCtrl;
 
   }
@@ -28,14 +25,6 @@ export class PerfilPage {
     this.navCtrl.push(PerfilEditPage);
   }
 
-  clickaudio() {
-    let options: CaptureAudioOptions = {limit: 3};
-    this.mediaCapture.captureAudio(options)
-      .then(
-        (data: MediaFile[]) => console.log(data),
-        (err: CaptureError) => console.error(err)
-      );
-  }
 
   clickcamera() {
     var storage = this.storage;

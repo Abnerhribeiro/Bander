@@ -7,10 +7,7 @@ import { Storage } from '@ionic/storage';
 import { File } from '@ionic-native/file';
 import { ActionSheetController } from 'ionic-angular'
 import {Camera, CameraOptions} from "@ionic-native/camera";
-import {
-  MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
-  CaptureAudioOptions
-} from '@ionic-native/media-capture';
+
 
 import { Crop } from '@ionic-native/crop';
 import {Media, MediaObject} from "@ionic-native/media";
@@ -27,7 +24,7 @@ import {Media, MediaObject} from "@ionic-native/media";
 export class PerfilEditPage {
 
 
-  fileR: MediaObject
+  mediaobject: MediaObject
   nome:any
   instrumento:any
   estilo:any
@@ -36,12 +33,11 @@ export class PerfilEditPage {
   filename:any
 
 
-  constructor(public file: File, public platform: Platform, public crop: Crop,
-              public mediaCapture : MediaCapture, public camera: Camera,
+  constructor(public file: File, public platform: Platform, public crop: Crop
+              , public camera: Camera,
               public storage: Storage, public navCtrl: NavController,
               public actionSheetCtrl: ActionSheetController, public media: Media,
-              public filepath : FilePath, public navparams : NavParams,
-              public mediaobject : MediaObject) {
+              public filepath : FilePath, public navparams : NavParams) {
     this.filepath = filepath;
     this.navCtrl = navCtrl;
     var self = this;
@@ -109,7 +105,8 @@ export class PerfilEditPage {
         this.filename = this.file.documentsDirectory.replace(/file:\/\//g, '') + name + '.m4a';
       }
       else if (this.platform.is('android')) {
-        this.filename = this.file.externalDataDirectory.replace(/file:\/\//g, '') + name + '.3gp';
+        alert(this.file.tempDirectory);
+        this.filename = this.file.tempDirectory.replace(/file:\/\//g, '') + name + '.3gp';
         alert("something happened: oi");
       }
 
@@ -147,15 +144,6 @@ export class PerfilEditPage {
     alert("something happened: play");
   }
 
-
-  clickaudio(){
-    let options: CaptureAudioOptions = { limit: 3 };
-    this.mediaCapture.captureAudio(options)
-      .then(
-        (data: MediaFile[]) => console.log(data),
-        (err: CaptureError) => console.error(err)
-      );
-  }
 
   clickcamera() {
     var self = this;

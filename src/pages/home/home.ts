@@ -6,10 +6,7 @@ import {CadastrarPage} from '../cadastrar/cadastrar';
 import {Storage} from '@ionic/storage';
 import {PhotoLibrary} from '@ionic-native/photo-library';
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {
-  MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
-  CaptureAudioOptions
-} from '@ionic-native/media-capture';
+
 import {FileChooser} from "@ionic-native/file-chooser";
 import {Media} from "@ionic-native/media";
 import {FilePath} from '@ionic-native/file-path';
@@ -26,7 +23,7 @@ export class HomePage {
   check: any;
   nav1: any;
 
-  constructor(public media: Media, public fileChooser: FileChooser, public mediaCapture: MediaCapture, public storage: Storage, public nav: NavController, public photoLibrary: PhotoLibrary, public camera: Camera) {
+  constructor(public media: Media, public fileChooser: FileChooser, public storage: Storage, public nav: NavController, public photoLibrary: PhotoLibrary, public camera: Camera) {
 
     this.nav = nav;
     this.email;
@@ -45,17 +42,7 @@ export class HomePage {
 
   }
 
-  clickfile() {
-    this.fileChooser.open().then(uri => {
-      (<any>window).FilePath.resolveNativePath(uri, (result) => {
-        this.nativepath = result;
-        this.audioplay();
-      }, (err) => {
-        //alert(err);
-      })
-    })
-      .catch(e => console.log(e));
-  }
+
 
   audioplay() {
     var pathalone = this.nativepath.substring(8);

@@ -19,10 +19,7 @@ import {AngularFireModule} from "angularfire2";
 import {FiltroPage} from '../pages/filtro/filtro';
 import {PhotoLibrary} from "@ionic-native/photo-library";
 import {Camera} from "@ionic-native/camera";
-import {
-  MediaCapture, MediaFile, CaptureError, CaptureImageOptions,
-  CaptureAudioOptions
-} from '@ionic-native/media-capture';
+
 import {FileChooser} from "@ionic-native/file-chooser";
 import {Media} from "@ionic-native/media";
 import {FilePath} from "@ionic-native/file-path";
@@ -31,6 +28,7 @@ import {Crop} from "@ionic-native/crop";
 import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
 import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
 import {PicBubble} from "../pages/Components/picbubble/PicBubble";
+import {File} from "@ionic-native/file";
 
 var config = {
 
@@ -90,12 +88,12 @@ var config = {
     PicBubble
   ],
   providers: [
+    File,
     Crop,
     Keyboard,
     FilePath,
     Media,
     FileChooser,
-    MediaCapture,
     PhotoLibrary,
     Camera,
     StatusBar,
