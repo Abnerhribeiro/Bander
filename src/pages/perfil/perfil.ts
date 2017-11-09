@@ -1,13 +1,16 @@
 import {Component} from '@angular/core';
 import {AboutPage} from '../about/about';
 import * as firebase from 'firebase';
-import {App, NavController} from "ionic-angular";
+import {App, NavController, NavParams, Platform} from "ionic-angular";
 import {Storage} from '@ionic/storage';
 import {ActionSheetController} from 'ionic-angular'
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 import {Crop} from '@ionic-native/crop';
 import {PerfilEditPage} from "../perfiledit/perfiledit";
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { Media, MediaObject } from '@ionic-native/media';
 
 
 @Component({
@@ -16,7 +19,14 @@ import {PerfilEditPage} from "../perfiledit/perfiledit";
 })
 export class PerfilPage {
 
+<<<<<<< HEAD
   constructor(public crop: Crop, public camera: Camera, public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
+=======
+  fileR: MediaObject
+  currentAudioName: any
+
+  constructor(public crop: Crop, public mediaCapture: MediaCapture, public camera: Camera, public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, private file: File, private media: Media, public params: NavParams, public filePath: FilePath, public platform: Platform) {
+>>>>>>> 0649aa85833334f80f1bbfd4e6acf719fcda1d4d
     this.navCtrl = navCtrl;
 
   }
@@ -25,7 +35,74 @@ export class PerfilPage {
     this.navCtrl.push(PerfilEditPage);
   }
 
+<<<<<<< HEAD
+=======
+  clickaudio() {
 
+
+    this.currentAudioName = this.createAudioName();
+
+    this.file.createFile(this.file.dataDirectory, this.currentAudioName , true ).then(() => {
+
+      if( !this.platform.is('android') ){
+        this.fileR = this.media.create( this.file.tempDirectory.replace(/^file:\/\//, '') + this.currentAudioName );
+      }else{
+        this.fileR = this.media.create( this.file.dataDirectory + this.currentAudioName );
+      }
+
+      this.fileR.startRecord();
+
+    });
+
+
+
+
+    // this.file.createFile(this.file.tempDirectory, 'my_file.m4a', true).then(() => {
+    //   let file = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'my_file.m4a');
+    //   file.startRecord();
+    //   window.setTimeout(() => file.stopRecord(), 10000);
+    // });
+    //
+    // let options: CaptureAudioOptions = {
+    //   limit: 3,
+    // };
+    // this.mediaCapture.captureAudio(options)
+    //   .then(
+    //     (data: MediaFile[]) => {
+    //       console.log(data)
+    //       var message = 'This is my message.';
+    //       var storageRef = firebase.storage().ref();
+    //       storageRef.putString(message).then(function(snapshot) {
+    //         console.log('Uploaded a raw string!');
+    //       });
+    //     },
+    //     (err: CaptureError) => console.error(err)
+    //   );
+  }
+  createAudioName() {
+    if( !this.platform.is('android') ){
+      return this.createName('.wav')
+    }else{
+      return this.createName('.amr')
+    }
+  }
+>>>>>>> 0649aa85833334f80f1bbfd4e6acf719fcda1d4d
+
+  endRecord(){
+    this.fileR.stopRecord();
+    this.fileR.release();
+  }
+
+  playLastRecord(){
+    this.fileR.play();
+  }
+
+  createName(extension){
+    let d = new Date(),
+      n = d.getTime(),
+      newFileName =  n + extension;
+    return newFileName;
+  }
   clickcamera() {
     var storage = this.storage;
     const options: CameraOptions = {

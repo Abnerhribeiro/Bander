@@ -23,7 +23,11 @@
     "@ionic-native/camera": "^4.3.1",
     "@ionic-native/core": "^3.14.0",
     "@ionic-native/crop": "^4.3.2",
+<<<<<<< HEAD
     "@ionic-native/file": "^4.3.3",
+=======
+    "@ionic-native/file": "^4.3.2",
+>>>>>>> 0649aa85833334f80f1bbfd4e6acf719fcda1d4d
     "@ionic-native/file-chooser": "^4.3.2",
     "@ionic-native/file-path": "^4.3.2",
     "@ionic-native/keyboard": "^4.3.2",

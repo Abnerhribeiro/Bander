@@ -27,7 +27,9 @@
     <ion-textarea id="descricao" color="dark" fixed></ion-textarea>
     <br/><br/><br/><br/>
     <button ion-button color="dark" class="action-sheet-button" (click)="perfiledit()" round>Editar Perfil</button>
-    <button ion-button color="dark" class="action-sheet-button" (click)="clickaudio()" round>Adicionar Áudio</button>
+    <button ion-button color="dark" class="action-sheet-button" (click)="clickaudio()" round>Iniciar gravar</button>
+    <button ion-button color="dark" class="action-sheet-button" (click)="endRecord()" round>Parar de gravar</button>
+    <button ion-button color="dark" class="action-sheet-button" (click)="playLastRecord()" round>Ouvir oudio</button>
 
   </ion-list>
 

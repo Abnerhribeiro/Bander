@@ -21,14 +21,18 @@ import {PhotoLibrary} from "@ionic-native/photo-library";
 import {Camera} from "@ionic-native/camera";
 
 import {FileChooser} from "@ionic-native/file-chooser";
-import {Media} from "@ionic-native/media";
+import { Media, MediaObject } from '@ionic-native/media';
 import {FilePath} from "@ionic-native/file-path";
 import {Keyboard} from "@ionic-native/keyboard";
 import {Crop} from "@ionic-native/crop";
 import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
 import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
 import {PicBubble} from "../pages/Components/picbubble/PicBubble";
+<<<<<<< HEAD
 import {File} from "@ionic-native/file";
+=======
+import { File } from '@ionic-native/file';
+>>>>>>> 0649aa85833334f80f1bbfd4e6acf719fcda1d4d
 
 var config = {
 
@@ -92,6 +96,7 @@ var config = {
     Crop,
     Keyboard,
     FilePath,
+    File,
     Media,
     FileChooser,
     PhotoLibrary,
