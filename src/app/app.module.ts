@@ -29,6 +29,7 @@ import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
 import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
 import {PicBubble} from "../pages/Components/picbubble/PicBubble";
 import {File} from "@ionic-native/file";
+import { LoadingController } from 'ionic-angular';
 
 var config = {
 
@@ -93,6 +94,7 @@ var config = {
     Keyboard,
     FilePath,
     File,
+    LoadingController,
     Media,
     FileChooser,
     PhotoLibrary,
