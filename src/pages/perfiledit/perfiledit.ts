@@ -1,20 +1,16 @@
-import { Component } from '@angular/core';
-import { AboutPage } from '../about/about';
+import {Component} from '@angular/core';
+import {AboutPage} from '../about/about';
 import * as firebase from 'firebase'
 import {FilePath} from "@ionic-native/file-path";
 import {App, NavController, NavParams, Platform} from "ionic-angular";
-import { Storage } from '@ionic/storage';
-import { File } from '@ionic-native/file';
-import { ActionSheetController } from 'ionic-angular'
+import {Storage} from '@ionic/storage';
+import {File} from '@ionic-native/file';
+import {ActionSheetController} from 'ionic-angular'
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 
-import { Crop } from '@ionic-native/crop';
+import {Crop} from '@ionic-native/crop';
 import {Media, MediaObject} from "@ionic-native/media";
-
-
-
-
 
 
 @Component({
@@ -25,54 +21,58 @@ export class PerfilEditPage {
 
 
   mediaobject: MediaObject
-  nome:any
-  instrumento:any
-  estilo:any
-  descricao:any
-  foto:any
-  filename:any
+  nome: any
+  instrumento: any
+  estilo: any
+  descricao: any
+  foto: any
+  filename: any
 
 
   constructor(public file: File, public platform: Platform, public crop: Crop
-              , public camera: Camera,
+    , public camera: Camera,
               public storage: Storage, public navCtrl: NavController,
               public actionSheetCtrl: ActionSheetController, public media: Media,
-              public filepath : FilePath, public navparams : NavParams) {
+              public filepath: FilePath, public navparams: NavParams) {
+
+
     this.filepath = filepath;
     this.navCtrl = navCtrl;
     var self = this;
     storage.get('uid').then((ID) => {
 
-        storage.get('img').then((img) => {
-          storage.get('nome').then((nome) => {
-            storage.get('instrumento').then((instrumento) => {
-              storage.get('estilo').then((estilo) => {
-                storage.get('descricao').then((descricao) => {
+      storage.get('img').then((img) => {
+        storage.get('nome').then((nome) => {
+          storage.get('instrumento').then((instrumento) => {
+            storage.get('estilo').then((estilo) => {
+              storage.get('descricao').then((descricao) => {
 
-                  document.getElementById("batataum").style.backgroundImage = "url("+"'"+img+"'"+")";
-                  this.oi();
+                document.getElementById("batataum").style.backgroundImage = "url(" + "'" + img + "'" + ")";
+                this.oi();
 
-                  if (self.descricao==null)
-                    self.descricao = "Descrição ainda não funciona :(";
-                  (<HTMLImageElement>document.getElementById("profile_pessoab")).src = img;
-                  self.nome = nome;
-                  self.instrumento = instrumento;
-                  self.estilo = estilo;
-                  self.descricao = descricao;
+                if (self.descricao == null)
+                  self.descricao = "Descrição ainda não funciona :(";
+                (<HTMLImageElement>document.getElementById("profile_pessoab")).src = img;
+                self.nome = nome;
+                self.instrumento = instrumento;
+                self.estilo = estilo;
+                self.descricao = descricao;
 
-                });
+              });
 
-              })
             })
           })
         })
-      });
+      })
+    });
 
   }
-  salvar(){
+
+  salvar() {
     var self = this;
-    if (self.nome == null) {}
-    else{
+    if (self.nome == null) {
+    }
+    else {
       if (self.nome.trim() === '') {
       }
       else {
@@ -94,54 +94,124 @@ export class PerfilEditPage {
         });
       }
     }
-    }
+  }
 
-  oi(){
+  oi() {
     this.platform.ready().then(() => {
 
       let name = new Date().getTime();
 
       if (this.platform.is('ios')) {
-        this.filename = this.file.documentsDirectory.replace(/file:\/\//g, '') + name + '.m4a';
+        this.filename = 'audioperfil.m4a';
       }
       else if (this.platform.is('android')) {
-        alert(this.file.tempDirectory);
-        this.filename = this.file.tempDirectory.replace(/file:\/\//g, '') + name + '.3gp';
-        alert("something happened: oi");
-      }
+        // this.file.listDir(this.file.externalRootDirectory, 'Downloads').then((x)=>{
+        //   alert("x = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
+        // this.file.listDir(this.file.applicationDirectory, 'Downloads').then((x)=>{
+        //   alert("y = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
+        // this.file.listDir(this.file.dataDirectory, 'Downloads').then((x)=>{
+        //   alert("z = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
+        // this.file.listDir(this.file.externalRootDirectory, '').then((x)=>{
+        //   alert("x2 = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
+        // this.file.listDir(this.file.applicationDirectory, '').then((x)=>{
+        //   alert("y2 = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
+        // this.file.listDir(this.file.dataDirectory, '').then((x)=>{
+        //   alert("z2 = "+x);
+        // }).catch((err)=>{
+        //   alert(err);
+        // })
 
+        //   alert(this.file.externalDataDirectory);
+        //   alert("1: "+this.file.applicationDirectory);
+        //   alert("2: "+this.file.cacheDirectory);
+        //   alert("3: "+this.file.externalRootDirectory);
+        //   alert("4: "+this.file.externalCacheDirectory);
+        //   alert("5: "+this.file.dataDirectory);
+        //   alert("6: "+this.file.externalApplicationStorageDirectory);
+        //   alert("7: "+this.file.documentsDirectory);
+        //   alert("8: "+this.file.syncedDataDirectory);
+        //   alert("9: "+this.file.sharedDirectory);
+        //   this.filepath.resolveNativePath("a").then((x)=>{
+        //     alert("10: "+x);
+        //
+        // }).catch((err)=>{
+        //     alert(err);
+        //   });
+        //   this.filename = this.file.externalDataDirectory/*.replace(/file:\/\//g, '') */+ name + '.3gp';
+        //   if (Media.installed()) {
+        //     this.media.create(this.filename);
+        //     this.media.create(name+'a.3gp');
+        //   }
+        //   else{
+        //     alert("WHAT THE FUCK BRO THIS IS NOT WORKING");
+        //   }
+        //
+        // this.filename = this.file.externalDataDirectory.replace(/file:\/\//g, '') + name + '.3gp';
+        //this.mediaobject = this.media.create(this.filename+"H");
+        //
+        // this.filename = this.file.applicationDirectory/*.replace(/file:\/\//g, '') */+ name + '.3gp';
+        // this.media.create(this.filename+"I");
+        //
+        //this.filename = this.file.applicationDirectory.replace(/file:\/\//g, '') + name + '.3gp';
+        //  this.media.create(this.filename+"G");
+        //
+        this.filename = this.file.externalDataDirectory.replace(/file:\/\//g, '') + 'audioperfil' + '.3gp';
+
+        // this.mediaobject = this.media.create(this.filename);
+      }
     });
 
     //this.startListening();
 
 
   }
-  start()
-  {
 
-    this.mediaobject = this.media.create(this.filename);
-
-    this.mediaobject.startRecord();
-    alert("something happened: start recording");
+  start() {
+    this.file.removeFile('', this.filename).then(() => {
+      this.mediaobject = this.media.create(this.filename);
+      this.mediaobject.startRecord();
+    }).catch((err) => {
+      this.mediaobject = this.media.create(this.filename);
+      this.mediaobject.startRecord();
+    })
   }
-  stop()
-  {
+
+  stop() {
 
     this.mediaobject.stopRecord();
 
-    console.log('duration: ' + this.mediaobject.getDuration());
-
     this.mediaobject.release();
 
-    console.log('done recording' + this.filename);
-    alert("something happened: done recording");
+    alert('duracao: ' + this.mediaobject.getDuration());
+    alert('done recording' + this.filename);
 
   }
+
   //coloca esses 3 blocos ai e testa lá
-  play()
-  {
-    this.mediaobject.play();
-    alert("something happened: play");
+  play() {
+    try {
+      this.mediaobject.play();
+    }catch(err){
+      alert("saporra é null, criando dnv");
+      this.mediaobject = this.media.create(this.filename);
+      this.mediaobject.play();
+
+    }
   }
 
 
@@ -149,15 +219,15 @@ export class PerfilEditPage {
     var self = this;
     var storage = this.storage;
     const options: CameraOptions = {
-      allowEdit : true,
-      targetWidth:300,
-      targetHeight:300,
+      allowEdit: true,
+      targetWidth: 300,
+      targetHeight: 300,
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType: 0
     }
-    storage.get('uid').then((ID)=>{
+    storage.get('uid').then((ID) => {
       this.camera.getPicture(options).then((imageData) => {
         // imageData is either a base64 encoded string or a file URI
         // If it's base64:
