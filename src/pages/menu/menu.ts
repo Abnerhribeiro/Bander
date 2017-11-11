@@ -220,10 +220,10 @@ export class MenuPage {
                  loader.dismiss();
                 //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
                 self.rodando = 0;
-                (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/user.jpg';
-                document.getElementById("nome").innerHTML = 'Sem perfis';
-                document.getElementById("instrumento").innerHTML = 'remova';
-                document.getElementById("estilo").innerHTML = 'alguns filtros';
+                (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/sad.png';
+                document.getElementById("nome").innerHTML = 'Nenhum perfil encontrado..';
+                document.getElementById("instrumento").innerHTML = '';
+                document.getElementById("estilo").innerHTML = '';
                 clearInterval(x);
               }
               //alert("return");
