@@ -102,9 +102,10 @@ export class ChatPage {
     var self = this;
     this.existe(this.itemRef, this.title, this.id).then(function(conversa) {
       self.itemRef = conversa;
-      self.itemRef.orderByChild("day").limitToLast(5).on('value', itemSnapShot => {
+      self.itemRef.limitToLast(5).on('value', itemSnapShot => {
         self.messages = [];
         itemSnapShot.forEach(itemSnap => {
+          if(itemSnap.child("/nome").val()!="BANDER: "){
           if(itemSnap.child("/id").val()==self.id) {
             self.messages.push({
               content : itemSnap.child("/content").val(),
@@ -115,11 +116,12 @@ export class ChatPage {
           }
           else {
             self.messages.push({
-              content : itemSnap.child("/content").val(),
-              img : itemSnap.child("/img").val(),
-              time : itemSnap.child("/time").val(),
-              position : 'left'
+              content: itemSnap.child("/content").val(),
+              img: itemSnap.child("/img").val(),
+              time: itemSnap.child("/time").val(),
+              position: 'left'
             });
+          }
           return false;
           }
         })

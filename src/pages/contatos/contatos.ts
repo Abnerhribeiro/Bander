@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 
-import {NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, NavController, NavParams} from 'ionic-angular';
 import {ChatPage} from '../chat/chat';
 import * as firebase from "firebase";
 import {Storage} from "@ionic/storage";
 import Query = firebase.firestore.Query;
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-contatos',
@@ -20,7 +21,7 @@ export class ContatosPage {
   items2 = Array<{ title: string, note: string, icon: string, id: string, img: string }>();
   busca: any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage,public actionSheetCtrl: ActionSheetController) {
     this.items = [];
     this.fazoutraparte()
 
@@ -184,6 +185,25 @@ export class ContatosPage {
         return item.title.toLowerCase().includes(val.toLowerCase());
       });
     }
+  }
+
+  presentActionSheetSair() {
+    let actionSheet = this.actionSheetCtrl.create({
+      enableBackdropDismiss: true,
+      buttons: [
+        {
+          text: 'Sair',
+
+          handler: () => {
+            alert("q");
+            this.navCtrl.setRoot(HomePage);
+            alert("oi?");
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 
   ionViewWillLeave() {

@@ -46,8 +46,6 @@ export class PerfilEditPage {
           storage.get('instrumento').then((instrumento) => {
             storage.get('estilo').then((estilo) => {
               storage.get('descricao').then((descricao) => {
-
-                document.getElementById("batataum").style.backgroundImage = "url(" + "'" + img + "'" + ")";
                 this.oi();
 
                 if (self.descricao == null)

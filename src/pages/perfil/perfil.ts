@@ -11,6 +11,7 @@ import {PerfilEditPage} from "../perfiledit/perfiledit";
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Media, MediaObject } from '@ionic-native/media';
+import {HomePage} from "../home/home";
 
 
 @Component({
@@ -65,9 +66,10 @@ export class PerfilPage {
       buttons: [
         {
           text: 'Sair',
-          role: 'cancel',
 
           handler: () => {
+            this.storage.clear();
+            this.navCtrl.setRoot(HomePage);
 
           }
         }

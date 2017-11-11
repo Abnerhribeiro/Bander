@@ -25,48 +25,31 @@ export class HomePage {
 
   constructor(public media: Media, public fileChooser: FileChooser, public storage: Storage, public nav: NavController, public photoLibrary: PhotoLibrary, public camera: Camera) {
 
-    this.nav = nav;
-    this.email;
-    this.password;
-    this.nav1 = nav;
-    var nav2 = this.nav1;
-    this.check = false;
-    var config = {
-      apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
-      authDomain: "bander-c876f.firebaseapp.com",
-      databaseURL: "https://bander-c876f.firebaseio.com",
-      storageBucket: "bander-c876f.appspot.com"
-    };
-    firebase.initializeApp(config);
+      this.nav = nav;
+      this.email;
+      this.password;
+      this.check = false;
+    try {
+      var config = {
+        apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
+        authDomain: "bander-c876f.firebaseapp.com",
+        databaseURL: "https://bander-c876f.firebaseio.com",
+        storageBucket: "bander-c876f.appspot.com"
+      };
+      firebase.initializeApp(config);
 
-
-  }
-
-
-
-  audioplay() {
-    var pathalone = this.nativepath.substring(8);
-    this.media.create(pathalone);
-    this.file = this.media;
-    this.file.play();
-  }
-
-  clickcamera() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    }catch(err){};
+    if(nav.length()>=1) {
+      window.location.reload();
+      storage.clear();
     }
 
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      // Handle error
-    });
+
   }
+
+
+
+
 
   removeSpecials(str) {
     var lower = str.toLowerCase();
@@ -82,9 +65,6 @@ export class HomePage {
     return res;
   }
 
-  clearstorage() {
-    this.storage.clear();
-  }
 
 
   checkUserData() {

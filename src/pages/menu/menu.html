@@ -1,14 +1,27 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button small round outline style=" max-width:35%; margin:right" class="button-large-ios" color="dark" (click)="openFiltroPage()">
+	<ion-navbar style="max-height:56px;">
+    <ion-row>
+        <ion-title>Menu</ion-title>
+
+
+      <ion-col>
+		<button ion-button small round outline class="button-large-ios" color="dark" (click)="openFiltroPage()">
 			Filtro
 			<ion-icon  name="funnel" padding-left></ion-icon>
 		</button>
-		<ion-buttons end>
-			<button ion-button icon-only>
-				<ion-icon name="cog" color="dark"></ion-icon>
-			</button>
-		</ion-buttons>
+        </ion-col>
+
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="presentActionSheetSair()">
+          <ion-icon name="cog" color="dark" style="padding-top:12px" ></ion-icon>
+        </button>
+      </ion-buttons>
+
+    </ion-row>
+
 	</ion-navbar>
 </ion-header>
 <ion-content>
@@ -19,7 +32,7 @@
 
 <div padding>
 	<div>
-		<img id="profile" class="center" style="width:220px;height:215px;border-radius:5%;margin:auto" src="../../assets/img/user.jpg" (click)="teste()">
+		<img id="profile" class="center" style="width:220px;height:215px;border-radius:5%;margin:auto" src="../../assets/img/adam.jpg" (click)="teste()">
 	</div>
 
 	<ion-list inset>
@@ -33,16 +46,26 @@
 	</ion-list>
 
 
-	<div class="divbtn" alt="">
 		<div class="container">
+      <div ion-row>
+        <div col>
 			<button ion-button color="danger" (click)="atualizanao()" icon-only large round style="float:left;">
 				<ion-icon name="thumbs-down" role="img"></ion-icon>
 			</button>
+      </div>
+      <div col style="margin-left:5%">
+      <button ion-button color="dark"   icon-only large round>
+        <ion-icon name="play" role="img"></ion-icon>
+      </button>
+      </div>
+        <div col>
 			<button ion-button color="secondary" (click)="atualizasim()" icon-only large round style="float:right;">
 				<ion-icon name="thumbs-up" role="img"></ion-icon>
 			</button>
+        </div>
+
 		</div>
-	</div>
+    </div>
 
 
 </div>

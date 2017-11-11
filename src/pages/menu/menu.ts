@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {ActionSheetController, NavController} from 'ionic-angular';
 import * as firebase from 'firebase';
 import {FiltroPage} from '../filtro/filtro';
 import {Storage} from '@ionic/storage';
 import {isPromise} from "rxjs/util/isPromise";
 import {MenuPerfilPage} from "../menuperfil/menuperfil";
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-menu',
@@ -12,7 +13,7 @@ import {MenuPerfilPage} from "../menuperfil/menuperfil";
 })
 export class MenuPage {
 
-  constructor(public storage: Storage, public navCtrl: NavController) {
+  constructor(public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.navCtrl = navCtrl;
     this.navCtrl
     //alert("iniciando showppl");
@@ -72,7 +73,7 @@ export class MenuPage {
 
       var storage = this.storage;
       //alert("data Storage");
-      (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/user.jpg';
+      (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/adam.jpg';
       document.getElementById("nome").innerHTML = 'procurando...';
       document.getElementById("instrumento").innerHTML = 'procurando...';
       document.getElementById("estilo").innerHTML = 'procurando...';
@@ -178,7 +179,6 @@ export class MenuPage {
           })
         })
       })
-      var self = this;
       var bool = false;
       var x = setInterval(function () {
         //alert("ainda não");
@@ -207,7 +207,7 @@ export class MenuPage {
               else if (done == self.max && ninguem == 1 || fimAnt==3) {
                 //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
                 self.rodando = 0;
-                (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/user.jpg';
+                (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/sad.png';
                 document.getElementById("nome").innerHTML = 'Sem perfis';
                 document.getElementById("instrumento").innerHTML = 'remova';
                 document.getElementById("estilo").innerHTML = 'alguns filtros';
@@ -390,24 +390,25 @@ export class MenuPage {
     this.navCtrl.push(FiltroPage, {"menupage": this});
   }
 
-  FiltroInstrumento() {
-    var config = {
-      apiKey: "AIzaSyAewx9FpQ2YVQgCmUjrVmioLG--sbOZhEY",
-      authDomain: "bander-c876f.firebaseapp.com",
-      databaseURL: "https://bander-c876f.firebaseio.com",
-      storageBucket: "bander-c876f.appspot.com"
-    };
-    if (!firebase.apps.length) {
-      firebase.initializeApp(config);
-    }
 
+  presentActionSheetSair() {
+    let actionSheet = this.actionSheetCtrl.create({
+      enableBackdropDismiss: true,
+      buttons: [
+        {
+          text: 'Sair',
 
-    var instrumentoRef = firebase.database().ref("user");
+          handler: () => {
+            this.storage.clear();
+            this.navCtrl.setRoot(HomePage);
 
-    instrumentoRef.orderByChild("Estilo").equalTo("Rock").on("child_added", function (data) {
-      //alert("Equal to filter: " + data.val().Nome);
+          }
+        }
+      ]
     });
 
+    actionSheet.present();
   }
+
 
 }
