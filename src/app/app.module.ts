@@ -28,11 +28,7 @@ import {Crop} from "@ionic-native/crop";
 import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
 import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
 import {PicBubble} from "../pages/Components/picbubble/PicBubble";
-<<<<<<< HEAD
-import {File} from "@ionic-native/file";
-=======
 import { File } from '@ionic-native/file';
->>>>>>> 0649aa85833334f80f1bbfd4e6acf719fcda1d4d
 
 var config = {
 
