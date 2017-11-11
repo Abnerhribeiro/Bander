@@ -5,7 +5,11 @@ import {FiltroPage} from '../filtro/filtro';
 import {Storage} from '@ionic/storage';
 import {isPromise} from "rxjs/util/isPromise";
 import {MenuPerfilPage} from "../menuperfil/menuperfil";
+<<<<<<< HEAD
 import {HomePage} from "../home/home";
+=======
+import { LoadingController } from 'ionic-angular';
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
 
 @Component({
   selector: 'page-menu',
@@ -13,7 +17,11 @@ import {HomePage} from "../home/home";
 })
 export class MenuPage {
 
+<<<<<<< HEAD
   constructor(public storage: Storage, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
+=======
+  constructor(public storage: Storage, public loadingCtrl: LoadingController, public navCtrl: NavController) {
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
     this.navCtrl = navCtrl;
     this.navCtrl
     //alert("iniciando showppl");
@@ -57,6 +65,11 @@ export class MenuPage {
   }
 
   public getData() {
+    //MOSTRAR CARREGANDO
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+    loader.present();
     if (this.rodando == 0) {
       this.rodando = 1;
       var self = this;
@@ -72,6 +85,11 @@ export class MenuPage {
       var fimAnt = 0;
 
       var storage = this.storage;
+
+
+
+
+
       //alert("data Storage");
       (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/adam.jpg';
       document.getElementById("nome").innerHTML = 'procurando...';
@@ -188,6 +206,7 @@ export class MenuPage {
           storage.set('candidato1', null).then((ca10) => {
             storage.set('candidato2', null).then((ca10) => {
               if (done == self.max && ninguem == 0 || fimAnt==3) {
+                loader.dismiss();
                 for (var i = 0; i < 3; i++) {
                   //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
                   //alert("for i = " + i + "; candidatos[i] = " + candidatos[i * 2]);
@@ -205,12 +224,19 @@ export class MenuPage {
 
 
               else if (done == self.max && ninguem == 1 || fimAnt==3) {
+                 loader.dismiss();
                 //alert("max = " + max + "; done = " + done + "; ninguem = " + ninguem);
                 self.rodando = 0;
                 (<HTMLImageElement>document.getElementById("profile")).src = '../../assets/img/sad.png';
+<<<<<<< HEAD
                 document.getElementById("nome").innerHTML = 'Sem perfis';
                 document.getElementById("instrumento").innerHTML = 'remova';
                 document.getElementById("estilo").innerHTML = 'alguns filtros';
+=======
+                document.getElementById("nome").innerHTML = 'Nenhum perfil encontrado..';
+                document.getElementById("instrumento").innerHTML = '';
+                document.getElementById("estilo").innerHTML = '';
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
                 clearInterval(x);
               }
               //alert("return");

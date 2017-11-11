@@ -28,7 +28,12 @@ import {Crop} from "@ionic-native/crop";
 import {PerfilEditPage} from "../pages/perfiledit/perfiledit";
 import {ChatBubble} from "../pages/Components/chatbubble/ChatBubble";
 import {PicBubble} from "../pages/Components/picbubble/PicBubble";
+<<<<<<< HEAD
 import { File } from '@ionic-native/file';
+=======
+import {File} from "@ionic-native/file";
+import { LoadingController } from 'ionic-angular';
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
 
 var config = {
 
@@ -93,6 +98,7 @@ var config = {
     Keyboard,
     FilePath,
     File,
+    LoadingController,
     Media,
     FileChooser,
     PhotoLibrary,

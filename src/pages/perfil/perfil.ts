@@ -8,10 +8,13 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 
 import {Crop} from '@ionic-native/crop';
 import {PerfilEditPage} from "../perfiledit/perfiledit";
+<<<<<<< HEAD
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Media, MediaObject } from '@ionic-native/media';
 import {HomePage} from "../home/home";
+=======
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
 
 
 @Component({
@@ -29,8 +32,11 @@ export class PerfilPage {
   perfiledit() {
     this.navCtrl.push(PerfilEditPage);
   }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ae3f89ba497fc71d619c423b2581bb2293f16206
   ionViewWillEnter(){
     var storage = this.storage;
     storage.get('uid').then((ID) => {
