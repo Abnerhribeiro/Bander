@@ -1,6 +1,13 @@
 page-menu {
 
   }
+#profile{ //IMAGEM DE PERFIL
+    width:200px;
+    height:200px;
+    border-radius:100%;
+    margin:auto;
+    margin-bottom: 50pt;
+}
 
 #btnescolha {
   margin-left: auto;
@@ -54,3 +61,33 @@ page-menu {
   width: 100%;
 }
 
+.btnAction{
+    width: 50pt;
+    height: 50pt;
+    border-radius: 100%;
+}
+
+#btnDislike{
+    margin-left: 0px;
+}
+
+#btnListen{
+    width: 50pt;
+    height: 40pt;
+    border-radius: 10%;
+}
+
+#profileBG{
+    position: relative;
+    height: 250pt;
+    width: 100%;
+    background-image: url("../../assets/img/cover4.jpg");
+    background-repeat: no-repeat;
+    background-size: 500px 250px;
+    background-position: top right;
+}
+
+#nome{
+    font-size:15pt;
+    font-weight: bold;
+}

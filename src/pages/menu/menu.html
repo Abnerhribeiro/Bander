@@ -16,7 +16,7 @@
 
       <ion-buttons end>
         <button ion-button icon-only (click)="presentActionSheetSair()">
-          <ion-icon name="cog" color="dark" style="padding-top:12px" ></ion-icon>
+          <ion-icon name="exit" color="dark" style="padding-top:12px" ></ion-icon>
         </button>
       </ion-buttons>
 
@@ -25,16 +25,13 @@
 	</ion-navbar>
 </ion-header>
 <ion-content>
-
-<br/>
-
-  <br/>
-
+<div id="profileBG">
 <div padding>
-	<div>
-		<img id="profile" class="center" style="width:220px;height:215px;border-radius:5%;margin:auto" src="../../assets/img/adam.jpg" (click)="teste()">
-	</div>
-
+    
+        <div>
+            <img id="profile" class="center" style="" src="../../assets/img/adam.jpg" (click)="teste()">
+        </div>
+    
 	<ion-list inset>
 		<ion-item>
 			<ion-label id="nome" color="dark">Nome</ion-label>
@@ -45,22 +42,23 @@
 		</ion-item>
 	</ion-list>
 
+    <br/><br/>
 
 		<div class="container">
       <div ion-row>
         <div col>
-			<button ion-button color="danger" (click)="atualizanao()" icon-only large round style="float:left;">
-				<ion-icon name="thumbs-down" role="img"></ion-icon>
+			<button ion-button id="btnDislike" class="btnAction" color="danger" (click)="atualizanao()" icon-only large round style="float:left;">
+				<ion-icon name="close" role="img"></ion-icon>
 			</button>
       </div>
       <div col style="margin-left:5%">
-      <button ion-button color="dark"   icon-only large round>
-        <ion-icon name="play" role="img"></ion-icon>
+      <button ion-button color="dark" id="btnListen" icon-only >
+        <ion-icon name="musical-notes" role="img"></ion-icon>
       </button>
       </div>
         <div col>
-			<button ion-button color="secondary" (click)="atualizasim()" icon-only large round style="float:right;">
-				<ion-icon name="thumbs-up" role="img"></ion-icon>
+			<button ion-button id="btnLike" class="btnAction" color="secondary" (click)="atualizasim()" icon-only large round style="float:right;">
+				<ion-icon name="checkmark" role="img"></ion-icon>
 			</button>
         </div>
 
@@ -69,4 +67,5 @@
 
 
 </div>
+    </div>
 </ion-content>
