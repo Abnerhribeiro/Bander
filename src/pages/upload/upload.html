@@ -10,10 +10,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <input type="file" (change)="atualizaArquivo($event)"/>
-  <button ion-button (click)="enviarArquivo()">Enviar</button>
-  <button ion-button (click)="baixarArquivo()">Baixar</button>
-  <button ion-button (click)="ouvirArquivo()">Escutar</button>
+<ion-content style="background-image: url(../../assets/img/fundoCapa2.jpg);" padding>
+  <input type="file" style="margin-bottom: 30px; margin-top: 40px; background-color: #f4f4f4db!important; border-radius: 2px;" (change)="atualizaArquivo($event)"/>
+
+
+
+  <button color="dark" block round ion-button (click)="enviarArquivo()">Enviar</button><br>
+  <button color="dark" block round ion-button (click)="baixarArquivo()">Baixar</button><br>
+  <button color="dark" block round ion-button (click)="ouvirArquivo()">Escutar</button><br>
 
 </ion-content>
