@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title id="titulo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content #content padding>
+	<ion-label stacked color="secondary">Vocês deram match!</ion-label>
+	<ion-label stacked color="secondary">Envie uma mensagem para entrar em contato!</ion-label>
+  <ion-list no-lines>
+
+    <ion-item *ngFor="let msg of messages" >
+      <chat-bubble [message]="msg"></chat-bubble>
+
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+
+<ion-footer class="chatPageFooter">
+  <ion-toolbar>
+
+    <ion-item>
+      <ion-label style="margin:0px;"></ion-label>
+      <div item-content style="width:100%;">
+        <ion-input #txtChat id="msgbox"[(ngModel)]='mensagem' placeholder="Escreva sua mensagem aqui" lineHeight="22"></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-buttons full right>
+      <button style="min-width:45px;height:40px;" (click)="enviar();">
+        <ion-icon name="send" color="dark" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

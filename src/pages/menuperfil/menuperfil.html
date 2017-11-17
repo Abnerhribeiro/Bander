@@ -1,0 +1,41 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title color><ion-icon name="person" start color="dark"></ion-icon> Seu Perfil</ion-title>
+		<ion-buttons end>
+
+			<button ion-button icon-only  (click)="presentActionSheetSair()">
+				<ion-icon name="cog" color="dark"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+<div padding>
+	<div>
+		<img id="profile_pessoa" class="center" style="width:220px;height:215px;border-radius:5%;margin:auto" src="../../assets/img/user.jpg">
+	</div>
+  <ion-list inset>
+		<ion-item>
+			<ion-label id="nome_pessoa" color="dark"></ion-label>
+		</ion-item>
+		<ion-item>
+			<ion-label id="instrumento_pessoa" color="dark" fixed></ion-label>
+			<ion-label id="estilo_pessoa" color="dark" fixed></ion-label>
+
+    </ion-item>
+    <ion-textarea id="descricao" color="dark" fixed></ion-textarea>
+    <br/><br/><br/><br/>
+    <button ion-button color="dark" class="action-sheet-button" (click)="perfiledit()" round>Editar Perfil</button>
+    <button ion-button color="dark" class="action-sheet-button" (click)="clickaudio()" round>Adicionar Áudio</button>
+
+  </ion-list>
+
+</div>
+
+</ion-content>
+
+
+
+
+
